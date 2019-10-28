@@ -1,6 +1,6 @@
 import { getSelection } from '../lib/utils';
 import $ from 'jquery';
-import notify from '../lib/notify';
+import { notify, clearAllNotify } from '../lib/notify';
 
 function toggleLinkInspectMode(flag) {
     $('body').toggleClass('translt-link-inspect-mode', flag);
@@ -15,7 +15,7 @@ function selectionHandler(evt) {
 
     if (selection) {
         chrome.runtime.sendMessage({ type: 'selection', text: selection.text });
-
+        clearAllNotify()
         notify(selection.text, {
             mode: 'in-place',
             position: selection.position,
@@ -24,5 +24,7 @@ function selectionHandler(evt) {
     }
 }
 
-console.log('inject success!')
+
 $(document).on('mouseup', selectionHandler);
+
+$(document).on('mousedown', clearAllNotify);
