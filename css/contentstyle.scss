@@ -78,3 +78,13 @@ a.transit-notify-close {
   text-decoration: none !important;
   pointer-events: none !important;
 }
+
+
+// 去除百度广告
+
+body [cmatchid] {
+  visibility: none !important;
+  display: none!important;
+  width: 0!important;
+  height: 0!important;
+}

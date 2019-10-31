@@ -24,7 +24,27 @@ function selectionHandler(evt) {
     }
 }
 
+function removeAd () {
+    $('.ec_tuiguang_pplink').closest('.result').remove();
+    $('.ec-pc_brand_tip-site').closest('.ec-pl-container').remove();
+}
 
 $(document).on('mouseup', selectionHandler);
 
 $(document).on('mousedown', clearAllNotify);
+
+$(document).ready(function () {
+    removeAd();
+})
+
+$(window).on('load', function () {
+    removeAd();
+})
+
+$(window).on('resize', function () {
+    removeAd();
+})
+
+chrome.extension.onMessage.addListener(function(details) {
+    removeAd();
+});
